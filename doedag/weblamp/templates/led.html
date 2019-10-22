@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+   <title>Huidige status van de lampen</title>
+   <link rel="stylesheet" href='../static/style.css'/>
+</head>
+
+<body>
+   <h1>De lampen van {{voornaam}}</h1>
+   <table border = "1">
+   <thead>
+   <tr>
+     <th width="150">Plaats</th>
+	 <th width="150">Status</th>
+	 <th width="150">Actie</th>
+   </tr>
+   </thead>
+   <tbody style='font-size:16px'>
+   {% for pin in pins %}
+     <tr>
+	 <td align="center">{{ pins[pin].name }} is </td> 
+     {% if pins[pin].state == true %}
+       <td bgcolor="#a3c2db" align="center">aan</td>  
+       <td align="center"><a href="/{{pin}}/off" class="button">Doe UIT</a></td>
+     {% else %}
+       <td align="center">uit</td>  
+       <td align="center"><a href="/{{pin}}/on" class="button1">Doe AAN</a></td>
+     {% endif %}
+	 </tr>
+   {% endfor %}
+   </tbody>
+   <!--{% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}-->
+   </table>
+</body>
+</html>
